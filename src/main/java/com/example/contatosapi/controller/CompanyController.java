@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.contatosapi.domain.Company;
+import com.example.contatosapi.enums.CompanyType;
 import com.example.contatosapi.model.AddEditCompanyDto;
 import com.example.contatosapi.service.CompanyService;
 
@@ -44,7 +45,7 @@ public class CompanyController {
 
 		Company company = new Company();
 
-		company.setType(model.getType());
+		company.setType(CompanyType.getEnumByString(model.getType()));
 		company.setName(model.getName());
 		company.setPhone(model.getPhone());
 		company.setAddressLogradouro(model.getAddressLogradouro());
@@ -66,7 +67,7 @@ public class CompanyController {
 
 		Company company = companyService.findaById(id);
 
-		company.setType(model.getType());
+		company.setType(CompanyType.getEnumByString(model.getType()));
 		company.setName(model.getName());
 		company.setPhone(model.getPhone());
 		company.setAddressLogradouro(model.getAddressLogradouro());

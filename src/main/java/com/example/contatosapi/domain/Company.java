@@ -4,49 +4,54 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.example.contatosapi.enums.CompanyType;
+
 @Entity
 public class Company {
-	
+
 	@Id
-	@Column(name="company_id")
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@Column(name = "company_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name="type", nullable = false)
-	private int type;
-	
-	@Column(name="name", nullable = false)
+
+	@Column(name = "type", nullable = false)
+	@Enumerated(EnumType.ORDINAL)
+	private CompanyType type;
+
+	@Column(name = "name", nullable = false)
 	private String name;
-	
-	@Column(name="phone", nullable = false)
+
+	@Column(name = "phone", nullable = false)
 	private String phone;
-	
-	@Column(name="address_logradouro")
+
+	@Column(name = "address_logradouro")
 	private String addressLogradouro;
-	
-	@Column(name="address_numero")
+
+	@Column(name = "address_numero")
 	private String addressNumero;
-	
-	@Column(name="address_complemento")
+
+	@Column(name = "address_complemento")
 	private String addressComplemento;
-	
-	@Column(name="address_bairro")
+
+	@Column(name = "address_bairro")
 	private String addressBairro;
-	
-	@Column(name="address_cidade")
+
+	@Column(name = "address_cidade")
 	private String addressCidade;
-	
-	@Column(name="address_uf")
+
+	@Column(name = "address_uf")
 	private String addressUf;
-	
-	@Column(name="address_cep")
+
+	@Column(name = "address_cep")
 	private String addressCep;
-	
-	@Column(name="created_at", nullable = false)
+
+	@Column(name = "created_at", nullable = false)
 	private Date createdAt;
 
 	public Long getId() {
@@ -57,11 +62,11 @@ public class Company {
 		this.id = id;
 	}
 
-	public int getType() {
-		return type;
+	public String getType() {
+		return type.getValue();
 	}
 
-	public void setType(int type) {
+	public void setType(CompanyType type) {
 		this.type = type;
 	}
 
@@ -143,6 +148,6 @@ public class Company {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
-	}	
+	}
 
 }

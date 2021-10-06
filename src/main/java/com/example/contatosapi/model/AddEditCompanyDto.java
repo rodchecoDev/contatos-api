@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AddEditCompanyDto {
 
-	private int type;
+	private String type;
 	private String name;
 	private String phone;
 	private String addressLogradouro;
@@ -16,11 +16,11 @@ public class AddEditCompanyDto {
 	private String addressCep;
 	private Date createdAt;
 
-	public int getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
